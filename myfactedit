@@ -1,0 +1,102 @@
+!DOCTYPE html>
+<html>
+<head>
+<title>
+</title>
+<link rel="stylesheet" href="css/style3.css">
+<style>
+</style>
+
+</head>
+<body class="b1">
+<div class="navbar">
+<ul>
+<li>Edit
+
+<div class="submenu">
+<ul>
+<li><a href="password.php">Password</a></li>
+<li><a href="mobile.php">Mobile</a></li>
+<li><a href="email.php">Email</a></li>
+</ul>
+</div>
+</li>
+<li><a href="logout.php">Logout</li>
+</ul>
+</div>
+<div class="gal">
+<img src="img/orisys2.jpg">
+</div>
+<div class="cont">
+<form >
+
+<li><a href="facultyviewprofile.php">My profile</a></li>
+<li> <a href="studreg.php"> Add student</a> </li>
+<li><a href="studentmark.php">Student mark</a></li> 
+<li><a href="studattd.php">Student attendance</a></li> 
+<li><a href="leave.php">Apply Leave</a></li> 
+
+</div>
+</form>
+			<form action="signup1.php" method=POST>
+			<?php
+						require_once 'connection.php';
+						session_start();
+						$var=$_SESSION['factid'];
+						$sql="select * from faculty where factid=$var";
+						$result=mysqli_query($conn,$sql);
+						while($row=mysqli_fetch_assoc($result))
+						{
+					?>
+                <h1>Edit Profile</h1><br>
+				
+			
+			
+<table>
+
+    <tr>
+        <td>Name</td><td>:</td><td><input type="text" value=<?php echo $row['name'];?> name="name"></td>
+    </tr>
+    <tr>
+        <td>Address</td><td>:</td><td><input type="text" value=<?php echo $row['address'];?> name="address"></td>
+    </tr>
+	<tr>
+        <td>DOB</td><td>:</td><td><input type="text" value=<?php echo $row['dob'];?> name="dob"></td>
+    </tr>
+ 
+    <tr>
+        <td>Gender</td><td>:</td><td><input type="text" value=<?php echo $row['gender'];?> name="gender"></td>
+    </tr>
+    <tr>
+        <td>Qualification</td><td>:</td><td><input type="text" value=<?php echo $row['qaulification'];?> name="qualification"></td>
+    </tr>
+    <tr>
+        <td>Mobile</td><td>:</td><td><input type="text" value=<?php echo $row['mobile'];?> name="mobile"></td>
+    </tr>
+    <tr>
+        <td>Batch in charge</td><td>:</td><td><input type="text" value=<?php echo $row['assignedbatch'];?> name="assignedbatch"></td>
+    </tr>
+    <tr>
+        <td>Email</td><td>:</td><td><input type="text" value=<?php echo $row['Email'];?> name="email"></td>
+    </tr>
+	 <tr>
+        <td>Username</td><td>:</td><td><input type="text" value=<?php echo $row['Username'];?> name="username"></td>
+    </tr
+    <tr>
+        <td>Password</td><td>:</td><td><input type="text" value=<?php echo $row['Password'];?> name="password"></td>
+    </tr>
+</table>
+
+           <?php
+								}
+							?>
+             
+            
+<br>
+<input type="submit" value="Save" name="editfac" class="button">
+</form>
+        </div>
+	</div>
+	</body>
+</html>
+		
